@@ -1,4 +1,4 @@
-FROM hypriot/rpi-alpine-scratch
+FROM mastermindg/rpi-haproxy:1.6-alpine
 
 RUN apk --update add curl unzip
 RUN apk add --virtual .build-deps
