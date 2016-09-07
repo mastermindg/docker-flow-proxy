@@ -1,6 +1,8 @@
 FROM mastermindg/rpi-haproxy:1.6-alpine
 
-RUN apk --update add curl unzip
+RUN apk update && \
+apk upgrade && \
+apk add curl unzip
 RUN apk add --virtual .build-deps
 RUN curl -SL https://releases.hashicorp.com/consul-template/0.13.0/consul-template_0.13.0_linux_arm.zip -o /usr/local/bin/consul-template.zip && \
     unzip /usr/local/bin/consul-template.zip -d /usr/local/bin/ && \
