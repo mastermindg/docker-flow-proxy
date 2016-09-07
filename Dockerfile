@@ -1,4 +1,4 @@
-FROM mastermindg/rpi-haproxy:1.6-alpine
+FROM mastermindg/rpi-haproxy
 
 RUN apk update && \
 apk upgrade && \
