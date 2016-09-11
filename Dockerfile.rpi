@@ -1,15 +1,11 @@
-FROM mastermindg/rpi-haproxy
+FROM hypriot/rpi-haproxy
 
-RUN apk update && \
-apk upgrade && \
-apk add curl unzip
-RUN apk add --virtual .build-deps
+RUN apt-get update && apt-get upgrade 
+RUN apt-get install -y curl unzip
 RUN curl -SL https://releases.hashicorp.com/consul-template/0.13.0/consul-template_0.13.0_linux_arm.zip -o /usr/local/bin/consul-template.zip && \
     unzip /usr/local/bin/consul-template.zip -d /usr/local/bin/ && \
     rm -f /usr/local/bin/consul-template.zip && \
     chmod +x /usr/local/bin/consul-template && \
-    apk del .build-deps
-
 RUN mkdir -p /cfg/tmpl
 RUN mkdir /consul_templates
 
