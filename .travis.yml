@@ -7,7 +7,7 @@ env:
       DOCKER_BUILD=mastermindg/docker-flow-proxy:${VERSION}
       DOCKERFILE=Dockerfile.amd64
     - ARCH=rpi
-      GOIMG=kutsudock/rpi-alpine-go  
+      GOIMG=hypriot/rpi-golang
       DOCKER_BUILD=mastermindg/docker-flow-proxy:rpi-${VERSION}
       DOCKERFILE=Dockerfile.rpi
 
