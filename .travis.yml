@@ -17,17 +17,18 @@ script:
   - if [[ %ARCH% == "rpi" ]]; then docker run --rm -v $PWD:/usr/src/myapp -w /usr/src/myapp -v go:/go kutsudock/rpi-alpine-go bash -c "cd /usr/src/myapp && go get -d -v -t && go test --cover -v ./... --run UnitTest && go build -v -o docker-flow-proxy"; fi
 
 after_success:
-  - if [[ %ARCH% == "x86_64" ]]; then docker build -t vfarcic/docker-flow-proxy:${VERSION} .; fi
-  - if [[ %ARCH% == "rpi" ]]; then docker build -t vfarcic/docker-flow-proxy:rpi-${VERSION} .; fi 
-  - if [[ %ARCH% == "x86_64" ]]; then docker tag vfarcic/docker-flow-proxy:${VERSION} vfarcic/docker-flow-proxy; fi
-  - if [[ %ARCH% == "rpi" ]]; then docker tag vfarcic/docker-flow-proxy:rpi-${VERSION} vfarcic/docker-flow-proxy; fi
+  - if [[ %ARCH% == "x86_64" ]]; then docker build -t mastermindg/docker-flow-proxy:${VERSION} .; fi
+  - if [[ %ARCH% == "rpi" ]]; then docker build -t mastermindg/docker-flow-proxy:rpi-${VERSION} .; fi 
+  - if [[ %ARCH% == "x86_64" ]]; then docker tag mastermindg/docker-flow-proxy:${VERSION} mastermindg/docker-flow-proxy; fi
+  - if [[ %ARCH% == "rpi" ]]; then docker tag mastermindg/docker-flow-proxy:rpi-${VERSION} mastermindg/docker-flow-proxy; fi
   - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker login -e $DOCKER_EMAIL -u $DOCKER_USERNAME -p $DOCKER_PASSWORD || false'
-  - if [[ %ARCH% == "x86_64" ]]; then '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker push vfarcic/docker-flow-proxy:${VERSION} || false'; fi
-  - if [[ %ARCH% == "rpi" ]]; then '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker push vfarcic/docker-flow-proxy:rpi-${VERSION} || false'; fi 
-  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker push vfarcic/docker-flow-proxy || false'
+  - if [[ %ARCH% == "x86_64" ]]; then '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker push mastermindg/docker-flow-proxy:${VERSION} || false'; fi
+  - if [[ %ARCH% == "rpi" ]]; then '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker push mastermindg/docker-flow-proxy:rpi-${VERSION} || false'; fi 
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker push mastermindg/docker-flow-proxy || false'
 
 branches:
   only:
     - master
 
-
+notifications:
+  email: false
