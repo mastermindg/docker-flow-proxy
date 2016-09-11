@@ -1,5 +1,6 @@
 env:
-  VERSION=1.${TRAVIS_BUILD_NUMBER}
+  global:
+    - VERSION=1.${TRAVIS_BUILD_NUMBER}
   matrix:  
     - ARCH=x86_64
       GOIMG=golang:1.6 
