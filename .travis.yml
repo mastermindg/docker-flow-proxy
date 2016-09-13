@@ -3,7 +3,7 @@ env:
     - VERSION=1.${TRAVIS_BUILD_NUMBER}
   matrix:  
     - ARCH=x86_64
-      GOIMG=golang:1.6 
+      GOIMG=mastermindg/rpi-go:1.6
       DOCKER_BUILD=mastermindg/docker-flow-proxy:${VERSION}
       DOCKERFILE=Dockerfile.amd64
     - ARCH=rpi
