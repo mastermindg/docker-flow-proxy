@@ -2,10 +2,10 @@ FROM hypriot/rpi-haproxy
 
 RUN apt-get update && apt-get upgrade 
 RUN apt-get install -y curl unzip
-RUN curl -SL https://releases.hashicorp.com/consul-template/0.13.0/consul-template_0.13.0_linux_arm.zip -o /usr/local/bin/consul-template.zip && \
+RUN curl -kSL https://releases.hashicorp.com/consul-template/0.13.0/consul-template_0.13.0_linux_arm.zip -o /usr/local/bin/consul-template.zip && \
     unzip /usr/local/bin/consul-template.zip -d /usr/local/bin/ && \
     rm -f /usr/local/bin/consul-template.zip && \
-    chmod +x /usr/local/bin/consul-template && \
+    chmod +x /usr/local/bin/consul-template
 RUN mkdir -p /cfg/tmpl
 RUN mkdir /consul_templates
 
